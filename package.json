@@ -1,0 +1,19 @@
+{
+  "name": "exo_s04_morse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mochaTest.js",
+  "scripts": {
+    "test": "mochaTest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clem0316/Exo_S04_Morse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clem0316/Exo_S04_Morse/issues"
+  },
+  "homepage": "https://github.com/clem0316/Exo_S04_Morse#readme"
+}
