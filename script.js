@@ -56,6 +56,12 @@ const morseToLatin = {
   "....": "H",
 };
 
+// Récupérer la valeur d'un input text par son id
+const getValue = () => {
+  let myText = document.getElementById("original").value;
+  return myText;
+};
+
 // Séparer les caractères d'un texte
 const getLatinCharacterList = (text) => {
   let separateText = text.split("");
@@ -77,6 +83,9 @@ const encode = (text) => {
   for (let i = 0; i < sentence.length; i++) {
     result.push(translateLatinCharacter(sentence[i]));
   }
+  document.getElementById("theResult").innerHTML =
+    "Voici la traduction en Morse " + `<strong>${result.join(" ")}</strong>`;
+  console.log(sentence);
   return result;
 };
 
@@ -99,6 +108,9 @@ const decode = (sign) => {
   for (let i = 0; i < sentence.length; i++) {
     result.push(translateMorseCharacter(sentence[i]));
   }
+  document.getElementById("theResult").innerHTML =
+    "Voici la traduction depuis le Morse " +
+    `<strong>${result.join(" ")}</strong>`;
+  console.log(sentence);
   return result;
 };
-console.log(decode("-.-. --- ..- -.-. --- ..-"));
