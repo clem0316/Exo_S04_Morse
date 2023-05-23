@@ -2,9 +2,12 @@
   "name": "exo_s04_morse",
   "version": "1.0.0",
   "description": "",
-  "main": "mochaTest.js",
+  "main": "script.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "test": "mochaTest"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

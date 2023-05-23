@@ -3,7 +3,7 @@ const latinToMorse = {
   B: "-...",
   C: "-.-.",
   D: "-..",
-  E: ".-..",
+  E: ".",
   F: "..-.",
   G: "--.",
   H: "....",
@@ -77,16 +77,20 @@ const translateLatinCharacter = (char) => {
 // Encoder en Morse un message texte
 const encode = (text) => {
   let upText = text.toUpperCase();
-
   let result = [];
   let sentence = getLatinCharacterList(upText);
   for (let i = 0; i < sentence.length; i++) {
     result.push(translateLatinCharacter(sentence[i]));
   }
+  return result.join(" ");
+};
+
+// Il est préférable de séparer la fonction qui encode avec la fonction qui affiche le résultat de cet encodage.
+const displayEncode = (text) => {
+  let result = encode(text);
   document.getElementById("theResult").innerHTML =
-    "Voici la traduction en Morse " + `<strong>${result.join(" ")}</strong>`;
+    "Voici la traduction en Morse " + `<strong>${result}</strong>`;
   console.log(sentence);
-  return result;
 };
 
 // Séparer les caractères Morse (que l'on a séparés par des espaces dans notre paramètre d'entrée)
@@ -108,9 +112,17 @@ const decode = (sign) => {
   for (let i = 0; i < sentence.length; i++) {
     result.push(translateMorseCharacter(sentence[i]));
   }
-  document.getElementById("theResult").innerHTML =
-    "Voici la traduction depuis le Morse " +
-    `<strong>${result.join(" ")}</strong>`;
-  console.log(sentence);
-  return result;
+  return result.join(" ");
 };
+
+// On décorèle l'affichage de la fonction qui décode. Ce sera + simple pour les dev front et les dev back pour bien séparer les tâches.
+const displayResult = (sign) => {
+  let result = decode(sign);
+  console.log(result);
+  document.getElementById("theResult").innerHTML =
+    "Voici la traduction depuis le Morse " + `<strong>${result}</strong>`;
+};
+
+// Ci-dessous les exports sur les fonctions choisies pour les tester avec Mocha
+exports.encode = encode;
+exports.decode = decode;
